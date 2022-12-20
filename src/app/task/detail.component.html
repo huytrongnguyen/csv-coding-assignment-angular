@@ -1,0 +1,15 @@
+<div><a routerLink="/">Back to list</a></div>
+<div>ID: {{task?.id}}</div>
+<div>Description: {{task?.description}}</div>
+<div>
+  AsssigneeID: {{task?.assigneeId}}
+  <select [(ngModel)]="selectedUser">
+    <option *ngFor="let u of users" [value]="u.id">
+      {{u.id}} {{u.name}}
+    </option>
+  </select>
+</div>
+<div>
+  Completed:  {{task?.completed}} <input type="checkbox" [(ngModel)]="status" />
+</div>
+<button type="button" (click)="update()">Update</button>

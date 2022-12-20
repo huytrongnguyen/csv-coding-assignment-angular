@@ -1,0 +1,19 @@
+<h2>Tasks</h2>
+
+<div class="input-group">
+  <span class="input-group-text">New Task</span>
+  <input type="text" class="form-control" placeholder="Task description..." [(ngModel)]="newTaskDescription" />
+  <button class="btn btn-outline-secondary" type="button" (click)="addNew()">Add</button>
+</div>
+
+<div>
+  <input type="text" class="form-control" placeholder="Filter by description..." [(ngModel)]="filterString" />
+</div>
+
+<ul>
+  <li *ngFor="let t of tasks">
+    <span *ngIf="t.description.toLowerCase().includes(filterString.toLowerCase())">
+      <a routerLink="task/{{t.id}}">{{t.id}}</a> {{t.description}}
+    </span>
+  </li>
+</ul>
