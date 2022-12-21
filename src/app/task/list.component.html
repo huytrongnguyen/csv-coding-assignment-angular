@@ -1,19 +1,38 @@
 <h2>Tasks</h2>
 
-<div class="input-group">
-  <span class="input-group-text">New Task</span>
-  <input type="text" class="form-control" placeholder="Task description..." [(ngModel)]="newTaskDescription" />
-  <button class="btn btn-outline-secondary" type="button" (click)="addNew()">Add</button>
+<div class="card">
+  <div class="card-header">
+    <div>
+      <input type="text" class="form-control" placeholder="Filter by description..." [(ngModel)]="filterString" />
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Assignee</th>
+          <th>Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let t of tasks">
+          <tr *ngIf="t.description.toLowerCase().includes(filterString.toLowerCase())" class="task">
+            <td><a routerLink="task/{{t.id}}">{{t.id}}</a></td>
+            <td>{{t.description}}</td>
+            <td>{{t.assigneeId}}</td>
+            <td><input type="checkbox" class="form-check-input" disabled [checked]="t.completed" /></td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+    <div class="input-group">
+      <span class="input-group-text">New Task</span>
+      <input type="text" class="form-control" placeholder="Task description..." [(ngModel)]="newTaskDescription" />
+      <button class="btn btn-outline-secondary" type="button" (click)="addNew()">Add</button>
+    </div>
+  </div>
 </div>
-
-<div>
-  <input type="text" class="form-control" placeholder="Filter by description..." [(ngModel)]="filterString" />
-</div>
-
-<ul>
-  <li *ngFor="let t of tasks">
-    <span *ngIf="t.description.toLowerCase().includes(filterString.toLowerCase())">
-      <a routerLink="task/{{t.id}}">{{t.id}}</a> {{t.description}}
-    </span>
-  </li>
-</ul>

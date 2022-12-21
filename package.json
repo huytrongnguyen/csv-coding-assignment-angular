@@ -10,6 +10,7 @@
     "@angular/platform-browser": "12.2.3",
     "@angular/platform-browser-dynamic": "12.2.3",
     "@angular/router": "12.2.3",
+    "bootstrap": "5.2.3",
     "core-js": "2.6.2",
     "sass": "^1.38.1",
     "rxjs": "^6.6.7",

@@ -37,7 +37,7 @@ export class BackendService {
       id: 1,
       description: "Move the desk to the new location",
       assigneeId: 222,
-      completed: false
+      completed: true
     }
   ];
 
